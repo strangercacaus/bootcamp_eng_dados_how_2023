@@ -6,7 +6,7 @@ import bs4
 
 url = 'https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados?modalidade=Lotofácil'
 
-r = requests.get(url)
+r = requests.get(url, verify=False)
 r_text = r.text.replace('\\r\\n', '')
 r_text = r_text.replace('"\r\n}', '')
 r_text = r_text.replace('{\r\n "html": "', '')
