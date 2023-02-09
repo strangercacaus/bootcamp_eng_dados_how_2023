@@ -1,0 +1,20 @@
+#Construindo a imagem Web_Apache
+docker build -t <image_name> .
+
+#Listando imagens disponíveis
+docker image ls
+
+#Executar um container 
+docker run -d -p 80:80 <image_name>>
+
+#Exibir containers ativos
+docker ps
+
+#Parar um container
+docker stop <container_id>
+
+#Subir um banco de dados com o compose
+docker-compose up <service_name>
+
+docker run -d -p 3000:3000 --name metabase metabase/metabase
+
