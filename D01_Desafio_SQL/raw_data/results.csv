@@ -1,4 +1,4 @@
-id,date,home_team,away_team,home_score,away_score,tournament,city,country,neutral
+,date,home_team,away_team,home_score,away_score,tournament,city,country,neutral
 0,1872-11-30,Scotland,England,0,0,Friendly,Glasgow,Scotland,False
 1,1873-03-08,England,Scotland,4,2,Friendly,London,England,False
 2,1874-03-07,Scotland,England,2,1,Friendly,Glasgow,Scotland,False
