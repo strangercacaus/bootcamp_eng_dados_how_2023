@@ -1,7 +1,6 @@
 import pandas as pd
 import psycopg2
 from sqlalchemy import create_engine
-import os
 
 db_host = '0.0.0.0'
 db_name = 'test_db'
