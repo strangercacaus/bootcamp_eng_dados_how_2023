@@ -1,7 +1,9 @@
+from ast import List
 import requests
 import logging
 from abc import ABC, abstractmethod
 import datetime
+import json
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -50,5 +52,38 @@ class TradesAPI(MercadoBitcoinApi):
         
         else:
             return f'{self.base_endpoint}/{self.coin}/{self.type}'
+        
+class DataTypeNotSupportedForIngestionException(Exception):
+
+    def __init__(self, data):
+        self.data = data
+        self.message = f'Data type {type(data)} is not supported for ingestion'
+        super().__init__(self.message)
+
+class DataWriter():
+
+    def __init__(self, filename:str) -> None:
+        self.filename = filename
     
+    def _write_row(self, row:'str') ->None:
+        with open(self.filename, "a") as f:
+            f.write(row)
+
+    def write(self, data: [List, dict]):
+        if isinstance(data, dict):
+            self._write_row(json.dumps(data) + "\n")
+        elif isinstance(data,list):
+            for element in data:
+                self.write(element)
+        else:
+            raise DataTypeNotSupportedForIngestionException(data)
+
 response2 = TradesAPI(coin='BTC').get_data(date_from=datetime.datetime(2023,3,1))
+
+
+data = TradesAPI("BTC").get_data()
+writer = DataWriter('trades.json')
+writer.write(data)
+
+
+
