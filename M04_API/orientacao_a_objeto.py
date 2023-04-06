@@ -2,6 +2,8 @@ import datetime
 import math
 
 class pessoa:
+
+# Método interno __init__ inicializador da classe, é executado quando a classe é iniciada:
     def __init__(self,
                  nome: str,
                  sobrenome: str,
