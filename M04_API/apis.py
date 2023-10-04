@@ -45,6 +45,7 @@ class TradesAPI(MercadoBitcoinApi):
         return int(date.timestamp())
 
     def _get_endpoint(self, date_from:datetime.datetime = None, date_to:datetime.datetime = None) -> str:
+        # sourcery skip: remove-redundant-if
 
         if date_from and not date_to:
             unix_from = self._get_unix_epoch(date_from)

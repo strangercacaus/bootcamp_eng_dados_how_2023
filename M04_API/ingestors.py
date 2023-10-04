@@ -2,7 +2,7 @@ import datetime
 from abc import ABC, abstractmethod
 from typing import List
 
-from M04_API.apis import DaySummaryAPI
+from apis import DaySummaryApi
 
 
 class DataIngestor(ABC):
@@ -29,10 +29,7 @@ class DataIngestor(ABC):
             return None
 
     def _get_checkpoint(self):
-        if not self._checkpoint:
-            return self.default_start_date
-        else:
-            return self._checkpoint
+        return self._checkpoint or self.default_start_date
 
     def _update_checkpoint(self, value):
         self._checkpoint = value
@@ -49,7 +46,7 @@ class DaySummaryIngestor(DataIngestor):
         date = self._get_checkpoint()
         if date < datetime.date.today():
             for coin in self.coins:
-                api = DaySummaryAPI(coin=coin)
+                api = DaySummaryApi(coin=coin)
                 data = api.get_data(date = date)
                 self.writer(coin=coin, api= api.type).write(data)
             self._update_checkpoint(date + datetime.timedelta(days=1))

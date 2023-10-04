@@ -3,7 +3,7 @@ import json
 import os
 from typing import List
 
-from M04_API.ingestors import DataTypeNotSupportedForIngestionException
+from ingestors import DataTypeNotSupportedForIngestionException
 
 
 class DataWriter():
