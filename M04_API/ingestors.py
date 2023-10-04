@@ -15,7 +15,7 @@ class DataIngestor(ABC):
 
     @property
     def _checkpoint_filename(self) -> str:
-        return f'M04_API/{self.__class__.__name__}.checkpoint'
+        return f'{self.__class__.__name__}.checkpoint'
 
     def _write_checkpoint(self):
         with open(self._checkpoint_filename, "w") as f:
