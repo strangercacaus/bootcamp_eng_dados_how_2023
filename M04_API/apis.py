@@ -46,12 +46,14 @@ class TradesAPI(MercadoBitcoinApi):
 
     def _get_endpoint(self, date_from:datetime.datetime = None, date_to:datetime.datetime = None) -> str:
         # sourcery skip: remove-redundant-if
-
+        
         if date_from and not date_to:
             unix_from = self._get_unix_epoch(date_from)
             return f'{self.base_endpoint}/{self.coin}/{self.type}/{unix_from}'
 
         if date_from and date_to:
+            if date_from > date_to:
+                raise RuntimeError('Interval start cannot be greater than interval end.')
             unix_from = self._get_unix_epoch(date_from)
             unix_to = self._get_unix_epoch(date_to)
             return f'{self.base_endpoint}/{self.coin}/{self.type}/{unix_from}/{unix_to}'
