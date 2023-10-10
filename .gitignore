@@ -1,4 +1,5 @@
 M08_AWS/.env
+M04_API/env
 M04_API/day-summary/*
 M04_API/__init__.py
 M04_API/.vscode/*

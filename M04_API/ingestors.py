@@ -200,7 +200,6 @@ class DataIngestor(ABC):
     Exemplo:
         Este método deve ser implementado em uma subclasse de `DataIngestor` para realizar a ingestão de fato.
     """
-
         pass
 
 
