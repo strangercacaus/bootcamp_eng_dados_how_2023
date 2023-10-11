@@ -2,7 +2,7 @@ import datetime
 from abc import ABC, abstractmethod
 from typing import List
 
-from apis import DaySummaryApi
+from M04_API.code.apis import DaySummaryApi
 
 
 class DataIngestor(ABC):
@@ -42,7 +42,10 @@ class DataIngestor(ABC):
         ```
     """
 
-    def __init__(self, writer, coins:List[str], default_start_date: datetime.date) -> None:
+    def __init__(self,
+                 writer,
+                 coins:List[str],
+                 default_start_date: datetime.date) -> None:
 
         """
     Inicializa a instância do `DataIngestor`.
