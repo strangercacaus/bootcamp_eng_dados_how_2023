@@ -5,9 +5,7 @@ import requests
 
 from unittest.mock import patch
 
-sys.path.append('M04_API')
-
-from apis import DaySummaryApi, TradesAPI, MercadoBitcoinApi
+from M04_API.code.apis import DaySummaryApi, TradesAPI, MercadoBitcoinApi
 
 class TestDaySummaryApi:
     @pytest.mark.parametrize(
@@ -57,7 +55,7 @@ class TestTradesApi:
         assert actual == expected
 
 @pytest.fixture()
-@patch("apis.MercadoBitcoinApi.__abstractmethods__", set())
+@patch("M04_API.code.apis.MercadoBitcoinApi.__abstractmethods__", set())
 def fixture_mercado_bitcoin_api():
     return MercadoBitcoinApi(
             coin='TEST'
@@ -85,7 +83,7 @@ def mocked_requests_get(*args, **kwargs):
 
 class TestMercadoBitcoinApi:
     @patch("requests.get")
-    @patch("apis.MercadoBitcoinApi._get_endpoint", return_value= "valid_endpoint")
+    @patch("M04_API.code.apis.MercadoBitcoinApi._get_endpoint", return_value= "valid_endpoint")
     def test_get_data_request_called(self,
                                      mock_get_endpoint,
                                      mock_requests,
@@ -95,7 +93,7 @@ class TestMercadoBitcoinApi:
 
 
     @patch("requests.get", side_effect = mocked_requests_get)
-    @patch("apis.MercadoBitcoinApi._get_endpoint", return_value= "valid_endpoint")
+    @patch("M04_API.code.apis.MercadoBitcoinApi._get_endpoint", return_value= "valid_endpoint")
     def test_get_data_with_valid_endpoint(self, 
                                           mock_get_endpoint,
                                           mock_requests,
@@ -105,7 +103,7 @@ class TestMercadoBitcoinApi:
         assert actual == expected
 
     @patch("requests.get", side_effect = mocked_requests_get)
-    @patch("apis.MercadoBitcoinApi._get_endpoint", return_value= "invalid_endpoint")
+    @patch("M04_API.code.apis.MercadoBitcoinApi._get_endpoint", return_value= "invalid_endpoint")
     def test_get_data_with_invalid_endpoint(self, 
                                           mock_get_endpoint,
                                           mock_requests,

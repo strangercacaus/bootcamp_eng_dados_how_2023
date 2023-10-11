@@ -2,8 +2,8 @@ import datetime
 import time
 
 from schedule import repeat, every, run_pending
-from ingestors import DaySummaryIngestor
-from writers import DataWriter
+from M04_API.code.ingestors import DaySummaryIngestor
+from M04_API.code.writers import DataWriter
 
 if __name__ == "__main__":
     ingestor = DaySummaryIngestor(
