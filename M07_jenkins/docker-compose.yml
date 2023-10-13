@@ -1,0 +1,15 @@
+version: '3'
+services:
+  jenkins:
+    image: pyjenkins
+    container_name: "jenkins_cacau"
+    ports:
+      - "8000:8080"
+      - "50000:50000"
+    volumes:
+      - "./jenkins_home:/var/jenkins_home"
+      - "./cambio:/cambio"
+
+
+
+#dad4f964c9d9484f903bd7f5913670c2

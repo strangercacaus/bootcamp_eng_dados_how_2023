@@ -1,0 +1,12 @@
+FROM jenkins/jenkins
+USER root
+RUN apt-get update
+RUN apt-get install -y python3-pip
+COPY ./cambio/requirements.txt .
+RUN apt install -y python3-requests
+RUN apt install -y python3-schedule
+RUN apt install -y python3-pytest
+
+
+
+# docker run -it --rm <nome_da_imagem> /bin/bash - rodar imagem abrir no terminal
