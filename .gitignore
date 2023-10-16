@@ -1,5 +1,6 @@
 
 M04_API/day-summary/*
+*/env
 */env/*
 */__pycache__/*
 */.pytest_cache/*
@@ -7,3 +8,4 @@ M04_API/day-summary/*
 */.git/*
 */.idea/*
 */.ipynb_checkpoints/*
+*/jenkins_home
